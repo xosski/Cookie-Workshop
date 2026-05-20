@@ -1,77 +1,298 @@
-# Cookie Workshop Extension
+Cookie Workshop — Beginner Learning Guide
+What Is Cookie Workshop?
 
-Cookie Workshop is a browser extension for **authorized cookie testing** during web development, QA, and approved security assessments.
+Cookie Workshop is a browser testing tool designed to help developers, QA engineers, students, and authorized security testers understand how browser cookies work.
 
-## Authorized Use Only
+Cookies are small pieces of data stored by websites inside your browser. They are commonly used for:
 
-Use this tool only on systems you own, control, or have explicit written permission to test.
+login sessions
+remembering preferences
+shopping carts
+authentication
+analytics
+security settings
 
-Do **not** use this tool to:
-- Access accounts without permission
-- Bypass authentication
-- Steal, export, or reuse session cookies
-- Modify cookies on third-party systems without authorization
-- Evade security controls
-- Perform unauthorized red-team activity
+This project provides a safe environment for learning how cookies behave during normal web application use.
 
-You are responsible for complying with all applicable laws, contracts, rules of engagement, and platform policies.
+Important Legal & Ethical Notice
 
-## Purpose
+Use Cookie Workshop only on:
 
-Cookie Workshop is intended for:
-- Local development testing
-- QA cookie validation
-- SameSite / Secure / Path testing
-- Authorized pentesting
-- Debugging login/session behavior
-- Testing cookie deletion and expiration handling
+websites you own
+local development environments
+training labs
+systems you are explicitly authorized to test
 
-## Features
+Never use this tool to:
 
-- View cookies for the current active tab
-- Add or update cookies for the current site
-- Delete selected cookies
-- Test `Secure` and `SameSite` behavior
-- Current-tab focused workflow
-- No remote upload
-- No automatic harvesting
-- No background cookie collection
+access unauthorized accounts
+steal session tokens
+impersonate users
+bypass authentication
+interfere with third-party systems
 
-## Safety Notes
+Responsible security work protects systems.
+It does not abuse them.
 
-This extension should not be used to collect or exfiltrate cookies.
+What You’ll Learn
 
-HttpOnly cookies may be visible through browser APIs depending on browser behavior and permissions, but they should not be copied, exported, reused, or transferred outside the authorized test environment.
+Using Cookie Workshop can help you understand:
 
-## Installation
+How websites store session data
+What Secure cookies do
+What SameSite settings mean
+How cookie expiration works
+Why paths and domains matter
+How login sessions persist
+Why modern browsers protect HttpOnly cookies
 
-1. Open Chrome or Edge.
-2. Go to `chrome://extensions`.
-3. Enable **Developer Mode**.
-4. Click **Load unpacked**.
-5. Select the `cookie-workshop-extension` folder.
+Think of it like a microscope for browser state.
 
-## Usage
+Cookie Basics
 
-1. Open the authorized target site.
-2. Click the Cookie Workshop extension icon.
-3. Click **Load Current Site Cookies**.
-4. Review, edit, or delete cookies only as allowed by your test scope.
+A cookie usually contains:
 
-## Recommended Rules of Engagement
+Property	Purpose
+Name	Identifier
+Value	Stored data
+Domain	Which site can use it
+Path	Which URL paths can access it
+Expires	When it is removed
+Secure	HTTPS-only access
+HttpOnly	Hidden from JavaScript
+SameSite	Cross-site behavior rules
 
-Before using this tool, confirm:
+Example:
 
-- The target domain is in scope.
-- You have written authorization.
-- Cookie/session testing is allowed.
-- Account takeover testing is explicitly permitted if relevant.
-- You will not retain sensitive session data after testing.
-- Findings will be reported responsibly.
+session_id=abc123
 
-## Disclaimer
+This tells the browser:
 
-This project is provided for lawful, ethical, and authorized testing only.  
-Misuse may violate laws, contracts, or platform policies.
+“Remember this value for later requests.”
 
-The author assumes no responsibility for unauthorized use.
+Understanding SameSite
+
+Modern browsers use SameSite to reduce certain web attacks.
+
+Lax
+
+Most common default.
+
+Allows:
+
+normal navigation
+safer cross-site handling
+
+Blocks many background cross-site requests.
+
+Strict
+
+Most restrictive.
+
+Cookies only work when directly visiting the site.
+
+Useful for:
+
+highly sensitive sessions
+admin portals
+None
+
+Allows full cross-site usage.
+
+Requires:
+
+HTTPS
+Secure=true
+
+Common for:
+
+APIs
+embedded services
+federated login systems
+What Secure Does
+
+A Secure cookie:
+
+Secure=true
+
+means:
+
+“Only send this cookie over HTTPS.”
+
+This prevents accidental transmission over insecure HTTP connections.
+
+What HttpOnly Does
+
+An HttpOnly cookie:
+
+HttpOnly=true
+
+cannot be read by JavaScript running in the page.
+
+This helps reduce:
+
+XSS token theft
+browser-side session leakage
+
+Important:
+Cookie Workshop should be used to understand these protections — not bypass them.
+
+Installing the Extension
+Step 1 — Open Extensions Page
+
+In Chrome or Edge:
+
+chrome://extensions
+Step 2 — Enable Developer Mode
+
+Toggle:
+
+Developer Mode → ON
+Step 3 — Load the Extension
+
+Click:
+
+Load unpacked
+
+Select the folder:
+
+cookie-workshop-extension
+
+The extension should now appear in your toolbar.
+
+Basic Usage
+Viewing Cookies
+Open a local or authorized test website.
+Click the Cookie Workshop icon.
+Press:
+Load Current Site Cookies
+
+You will see:
+
+cookie names
+values
+paths
+security settings
+Creating a Cookie
+
+Example test cookie:
+
+Field	Value
+Name	theme
+Value	darkmode
+Path	/
+SameSite	Lax
+
+Click:
+
+Set Cookie
+
+Refresh the site and observe behavior.
+
+Deleting a Cookie
+
+Press:
+
+Delete
+
+next to the cookie entry.
+
+You can observe:
+
+logout behavior
+preference resets
+session invalidation
+
+This helps explain how many web applications maintain state.
+
+Learning Exercises
+Exercise 1 — Session Persistence
+Create a cookie.
+Refresh the page.
+Restart the browser.
+Observe whether it remains.
+
+Question:
+
+What determines persistence?
+
+Exercise 2 — Path Restrictions
+
+Create:
+
+Path=/admin
+
+Observe:
+
+where the cookie appears
+which pages receive it
+Exercise 3 — Secure Cookies
+
+Test:
+
+Secure=true
+
+Compare:
+
+HTTP behavior
+HTTPS behavior
+Exercise 4 — SameSite
+
+Create multiple cookies using:
+
+Lax
+Strict
+None
+
+Study:
+
+browser behavior
+navigation differences
+request handling
+Why Browsers Protect Cookies
+
+Modern browsers intentionally restrict:
+
+cross-site access
+JavaScript visibility
+insecure transport
+unauthorized modification
+
+These protections exist because cookies often contain:
+
+login sessions
+authentication state
+user preferences
+security tokens
+
+Understanding the protections is part of becoming a better developer and defender.
+
+Recommended Learning Topics
+
+After learning cookies, explore:
+
+HTTP requests
+sessions
+CSRF protection
+XSS prevention
+OAuth
+JWT tokens
+browser storage APIs
+secure authentication design
+Final Reminder
+
+Security knowledge is a tool.
+
+In responsible hands:
+
+it improves systems
+protects users
+strengthens infrastructure
+
+The goal of Cookie Workshop is education, testing, and understanding — not abuse.
+
+Or in GhostCore terms:
+
+The cookie remembers.
+The browser decides.
+The engineer learns where trust begins and ends.
