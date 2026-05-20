@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cookie Workshop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h2>Cookie Workshop</h2>
+  <p class="warn">Use only on systems you own or are authorized to test. This editor is scoped to the active tab's site.</p>
+
+  <div id="message" class="message hidden"></div>
+
+  <section class="panel">
+    <button id="load">Load Current Site Cookies</button>
+    <p id="site" class="muted"></p>
+    <label for="rawCookie">Raw Cookie header equivalent</label>
+    <textarea id="rawCookie" readonly placeholder="No cookies loaded."></textarea>
+  </section>
+
+  <section class="panel">
+    <h3>Current Cookies</h3>
+    <div id="cookies"></div>
+  </section>
+
+  <section class="panel">
+    <h3>Set / Update Cookie</h3>
+    <label for="name">Name</label>
+    <input id="name" placeholder="session_id">
+
+    <label for="value">Value</label>
+    <input id="value" placeholder="cookie value">
+
+    <label for="path">Path</label>
+    <input id="path" placeholder="/" value="/">
+
+    <label for="domain">Domain (optional)</label>
+    <input id="domain" placeholder="leave blank for active host">
+
+    <label for="sameSite">SameSite</label>
+    <select id="sameSite">
+      <option value="lax">Lax</option>
+      <option value="strict">Strict</option>
+      <option value="no_restriction">None</option>
+    </select>
+
+    <label for="expiresMode">Expiration</label>
+    <select id="expiresMode">
+      <option value="days">Expires in days</option>
+      <option value="session">Session cookie</option>
+      <option value="max_age">Max-Age seconds</option>
+      <option value="expires_at">Absolute UTC datetime</option>
+    </select>
+
+    <label for="days">Days</label>
+    <input id="days" type="number" value="7" min="1">
+
+    <label for="maxAge">Max-Age seconds</label>
+    <input id="maxAge" type="number" min="0" placeholder="3600">
+
+    <label for="expiresAt">Expires at UTC</label>
+    <input id="expiresAt" type="datetime-local">
+
+    <label class="check"><input type="checkbox" id="secure"> Secure</label>
+    <label class="check"><input type="checkbox" id="httpOnly"> HttpOnly</label>
+
+    <button id="set">Save Cookie</button>
+  </section>
+
+  <section class="panel">
+    <h3>Set Multiple Cookies from a Cookie Header</h3>
+    <p class="muted">Paste a simple Cookie request header such as <code>a=1; b=2</code>. Attributes below apply to every cookie.</p>
+
+    <label for="bulkHeader">Cookie header</label>
+    <textarea id="bulkHeader" placeholder="name=value; theme=dark"></textarea>
+
+    <label for="bulkPath">Path</label>
+    <input id="bulkPath" value="/" placeholder="/">
+
+    <label for="bulkDomain">Domain (optional)</label>
+    <input id="bulkDomain" placeholder="leave blank for active host">
+
+    <label for="bulkDays">Days</label>
+    <input id="bulkDays" type="number" value="7" min="1">
+
+    <label for="bulkSameSite">SameSite</label>
+    <select id="bulkSameSite">
+      <option value="lax">Lax</option>
+      <option value="strict">Strict</option>
+      <option value="no_restriction">None</option>
+    </select>
+
+    <label class="check"><input type="checkbox" id="bulkSecure"> Secure</label>
+    <label class="check"><input type="checkbox" id="bulkHttpOnly"> HttpOnly</label>
+
+    <button id="bulkSet">Set Header Cookies</button>
+  </section>
+
+  <section class="panel">
+    <h3>Delete Cookie</h3>
+    <label for="deleteName">Name</label>
+    <input id="deleteName" placeholder="cookie name">
+
+    <label for="deletePath">Path</label>
+    <input id="deletePath" value="/" placeholder="/">
+
+    <label for="deleteDomain">Domain (optional)</label>
+    <input id="deleteDomain" placeholder="must match cookie domain">
+
+    <button id="deleteCookie">Delete</button>
+  </section>
+
+  <section class="panel">
+    <h3>Clear Visible Cookies</h3>
+    <p class="muted">Clears all cookies visible to the active tab URL. For exact deletes, each cookie's own path/domain is used.</p>
+    <button id="clearAll">Clear All Visible</button>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

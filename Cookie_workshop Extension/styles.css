@@ -1,0 +1,104 @@
+body {
+    font-family: system-ui, sans-serif;
+    width: 430px;
+    padding: 12px;
+}
+
+h2,
+h3 {
+    margin: 8px 0;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin: 8px 0 3px;
+}
+
+input,
+select,
+textarea,
+button {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 4px 0;
+    padding: 7px;
+    font: inherit;
+}
+
+textarea {
+    min-height: 58px;
+    resize: vertical;
+}
+
+code {
+    background: #f3f3f3;
+    overflow-wrap: anywhere;
+}
+
+small {
+    color: #555;
+    display: block;
+    margin: 6px 0;
+}
+
+.warn {
+    background: #fff3cd;
+    border: 1px solid #e0c46c;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.message {
+    border-radius: 6px;
+    margin: 8px 0;
+    padding: 8px;
+}
+
+.message.success {
+    background: #eaf7ea;
+    border: 1px solid #a8d8a8;
+}
+
+.message.error {
+    background: #ffecec;
+    border: 1px solid #ffb3b3;
+}
+
+.hidden {
+    display: none;
+}
+
+.muted {
+    color: #555;
+}
+
+.panel {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.cookie {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+.cookie button {
+    width: auto;
+    margin-right: 6px;
+}
+
+.check {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.check input {
+    width: auto;
+}
